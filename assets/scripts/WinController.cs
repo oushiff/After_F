@@ -10,7 +10,6 @@ public class WinController : MonoBehaviour {
         GameManager.Instance.TimeConsumed = GameManager.Instance.TimeRemaining;
 
         
-
 		SceneManager.LoadScene ("WinPage");
 	}
 }
