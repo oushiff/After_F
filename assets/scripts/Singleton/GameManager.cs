@@ -90,33 +90,33 @@ public class GameManager : Singleton<GameManager> {
 		}
 
 		set{
-			_invincible = value;
+			_bleeding = value;
 		}
 	}
 
-	[SerializeField]
-	private float _bleedingTime = 0f;
+//	[SerializeField]
+//	private float _bleedingTime = 0f;
+//
+//	public float BleedingTime{
+//		get{
+//			return _bleedingTime;
+//		}
+//
+//		set{
+//			_bleedingTime = value;
+//		}
+//	}
 
-	public float BleedingTime{
-		get{
-			return _bleedingTime;
-		}
-
-		set{
-			_bleedingTime = value;
-		}
-	}
-
-	[SerializeField]
-	private float bleedingTimeMax = 2.0f;
-
-	private void EnableBleeding(){
-		_bleeding = true;
-		_bleedingTime = bleedingTimeMax;
-
-		Debug.Log ("Bleeding: " + Bleeding);
-		Debug.Log (BleedingTime);
-	}
+//	[SerializeField]
+//	private float bleedingTimeMax = 2.0f;
+//
+//	private void EnableBleeding(){
+//		_bleeding = true;
+//		_bleedingTime = bleedingTimeMax;
+//
+//		Debug.Log ("Bleeding: " + Bleeding);
+//		Debug.Log (BleedingTime);
+//	}
 
 	private float maxTime = 180; // In seconds.
 
@@ -129,13 +129,14 @@ public class GameManager : Singleton<GameManager> {
 	}
 
 	public void DecreaseHealth(float DecreaseValue){
-		EnableBleeding ();
+		//EnableBleeding ();
 		Health -= DecreaseValue;
 	}
 
 	private void HealthCheck(){
 		if (Health <= 0) {
-			transform.parent.gameObject.AddComponent<GameOver>();
+			//transform.parent.gameObject.AddComponent<GameOver>();
+			LoseGame();
 		}
 	}
 
@@ -147,7 +148,9 @@ public class GameManager : Singleton<GameManager> {
 
 		if (TimeRemaining <= 0) {
 			//RestartGame ();
-			transform.parent.gameObject.AddComponent<GameOver>();
+			//transform.parent.gameObject.AddComponent<GameOver>();
+			LoseGame();
+
 		}
 
 		if (InvincibleTime > 0 && Invincible == true) {
@@ -165,14 +168,14 @@ public class GameManager : Singleton<GameManager> {
 			}
 		}
 
-		if (_bleedingTime > 0 && _bleeding == true) {
-			_bleedingTime -= Time.deltaTime;
-
-			if (_bleedingTime <= 0) {
-				_bleedingTime = 0f;
-				_bleeding = false;
-			}
-		}
+//		if (_bleedingTime > 0 && _bleeding == true) {
+//			_bleedingTime -= Time.deltaTime;
+//
+//			if (_bleedingTime <= 0) {
+//				_bleedingTime = 0f;
+//				_bleeding = false;
+//			}
+//		}
 	}
 
 	void FixedUpdate(){
@@ -199,5 +202,12 @@ public class GameManager : Singleton<GameManager> {
 		NumCoins = 0;
 		Health = maxHealth;
 		Status = "PlayerSnow";
+	}
+	public bool isLose = false;
+	public void LoseGame(){
+		isLose = true;
+	}
+	public void ResetLoseGame(){
+		isLose = false;
 	}
 }

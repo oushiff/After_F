@@ -18,6 +18,7 @@ public class Jag : MonoBehaviour {
 	private void GetAttacked()
 	{
 		//GameManager.Instance.Health -= healthDecrease;
+
 		GameManager.Instance.DecreaseHealth(healthDecrease);
 
 		/*

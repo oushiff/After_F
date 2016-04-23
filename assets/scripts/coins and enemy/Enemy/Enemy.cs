@@ -57,10 +57,12 @@ public class Enemy : Character {
 		if (other.tag == "PlayerSnow" || other.tag == "PlayerCloud") {
 			
 			if(GameManager.Instance.Bleeding == false){
+				GameManager.Instance.Bleeding = true;
 				GameManager.Instance.DecreaseHealth (40f);
 				if (GameManager.Instance.Health <= 0) {
 					//GameManager.Instance.RestartGame ();
-					transform.parent.gameObject.AddComponent<GameOver>();
+					//transform.parent.gameObject.AddComponent<GameOver>();
+					GameManager.Instance.LoseGame();
 				}
 			}
 

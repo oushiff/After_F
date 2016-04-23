@@ -13,7 +13,11 @@ public class healthbarController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		health = GameManager.Instance.Health;
-		healthBar.rectTransform.localScale = new Vector3 ( health/100, healthBar.rectTransform.localScale.y, healthBar.rectTransform.localScale.z);
-
+		if (health <= 0) {
+			GameManager.Instance.LoseGame ();
+			healthBar.rectTransform.localScale = new Vector3 (0, healthBar.rectTransform.localScale.y, healthBar.rectTransform.localScale.z);
+		} else {
+			healthBar.rectTransform.localScale = new Vector3 (health / 100, healthBar.rectTransform.localScale.y, healthBar.rectTransform.localScale.z);
+		}
 	}
 }

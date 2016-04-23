@@ -24,14 +24,17 @@ public class Blinking : MonoBehaviour {
 			//wait for a bit
 			yield return new WaitForSeconds(blinkTime);
 		}
-
+		GameManager.Instance.Bleeding = false;
 		//make sure renderer is enabled when we exit
 		GetComponent<Renderer>().enabled = true;
 	}
 
 
 	// Update is called once per frame
-	void Update () {
-	
+	void FixedUpdate () {
+		if (GameManager.Instance.Bleeding) {
+			counting = 0;
+			StartCoroutine(DoBlinks());
+		}
 	}
 }

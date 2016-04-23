@@ -8,7 +8,8 @@ public class EndGame : MonoBehaviour {
 		if (collider2d.gameObject.tag == "PlayerSnow")
 		{
 			Debug.LogError ("hit the bottom");
-			transform.parent.gameObject.AddComponent<GameOver>();
+			GameManager.Instance.LoseGame ();
+			//transform.parent.gameObject.AddComponent<GameOver>();
 			//Application.LoadLevel (Application.loadedLevel);
 			//GameManager.Instance.RestartGame ();
 		}
