@@ -17,11 +17,15 @@ public class Jag : MonoBehaviour {
 
 	private void GetAttacked()
 	{
-		GameManager.Instance.Health -= healthDecrease;
+		//GameManager.Instance.Health -= healthDecrease;
+		GameManager.Instance.DecreaseHealth(healthDecrease);
+
+		/*
 		if (GameManager.Instance.Health <= 0) {
 			//GameManager.Instance.RestartGame ();
 			transform.parent.gameObject.AddComponent<GameOver>();
 		}
+		*/
 
 	}
 }

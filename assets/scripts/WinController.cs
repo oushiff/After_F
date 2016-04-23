@@ -4,12 +4,9 @@ using System.Collections;
 
 public class WinController : MonoBehaviour {
 
-	void OnTriggerEnter2D(Collider2D collider){
-		Debug.LogError ("hit the flag");
+	void OnCollisionEnter2D(Collision2D collider){
         GameManager.Instance.CoinsGot = GameManager.Instance.NumCoins;
         GameManager.Instance.TimeConsumed = GameManager.Instance.TimeRemaining;
-
-        
 		SceneManager.LoadScene ("WinPage");
 	}
 }

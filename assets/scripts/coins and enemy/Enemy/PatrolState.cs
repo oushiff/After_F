@@ -30,7 +30,7 @@ public class PatrolState : IEnemyState {
 	}
 
 	public void OnTriggerEnter(Collider2D other){
-		Debug.Log ("Collision");
+		//Debug.Log ("Collision");
 		if (other.tag == "Patrol Edge") {
 			Debug.Log ("Meet Edge");
 			enemy.ChangeDirection ();
